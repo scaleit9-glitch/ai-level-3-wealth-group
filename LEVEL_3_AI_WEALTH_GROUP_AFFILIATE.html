@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Wealth Group — Step-by-Step Affiliate Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --surface-hover: #1a1a26;
+    --border: #1e1e2e;
+    --accent: #00e68a;
+    --accent-dim: #00e68a22;
+    --accent-glow: #00e68a44;
+    --gold: #ffd700;
+    --gold-dim: #ffd70022;
+    --text: #e8e8ef;
+    --text-dim: #8888a0;
+    --danger: #ff4466;
+    --phase-line: #2a2a3a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', system-ui, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 60px 24px 40px;
+    position: relative;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  }
+
+  .badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent-dim);
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    background: var(--accent-dim);
+  }
+
+  .hero h1 {
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 span { color: var(--accent); }
+
+  .hero p {
+    color: var(--text-dim);
+    font-size: 15px;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .progress-section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 30px 24px 10px;
+  }
+
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .progress-header span {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .progress-header .pct {
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  .progress-track {
+    width: 100%;
+    height: 6px;
+    background: var(--border);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), #00ccff);
+    border-radius: 100px;
+    transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .steps-container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 30px 24px 40px;
+    position: relative;
+  }
+
+  .steps-container::before {
+    content: '';
+    position: absolute;
+    left: 47px;
+    top: 50px;
+    bottom: 60px;
+    width: 2px;
+    background: repeating-linear-gradient(
+      to bottom,
+      var(--phase-line) 0px,
+      var(--phase-line) 6px,
+      transparent 6px,
+      transparent 12px
+    );
+  }
+
+  .step-block {
+    position: relative;
+    padding-left: 80px;
+    margin-bottom: 12px;
+  }
+
+  .step-marker {
+    position: absolute;
+    left: 32px;
+    top: 22px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    color: var(--text-dim);
+    z-index: 2;
+    transition: all 0.4s ease;
+  }
+
+  .step-block.completed .step-marker {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+
+  .step-block.active .step-marker {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-dim);
+    animation: pulse-ring 2s ease infinite;
+  }
+
+  @keyframes pulse-ring {
+    0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow); }
+    50% { box-shadow: 0 0 0 8px transparent; }
+  }
+
+  .step-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .step-card:hover {
+    border-color: #2a2a40;
+    background: var(--surface-hover);
+  }
+
+  .step-block.completed .step-card {
+    border-color: var(--accent-dim);
+  }
+
+  .step-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    user-select: none;
+  }
+
+  .step-title-group { flex: 1; }
+
+  .step-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+  }
+
+  .step-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+  }
+
+  .step-block.completed .step-title { color: var(--accent); }
+
+  .step-toggle {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    font-size: 14px;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+
+  .step-card.open .step-toggle {
+    transform: rotate(180deg);
+  }
+
+  .step-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .step-card.open .step-body {
+    max-height: 1200px;
+  }
+
+  .step-content {
+    padding: 0 22px 20px;
+  }
+
+  .step-desc {
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+
+  .task {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .task-check {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    border: 2px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    margin-top: 1px;
+    background: transparent;
+    color: transparent;
+    font-size: 12px;
+  }
+
+  .task-check:hover { border-color: var(--accent); }
+
+  .task-check.checked {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+  }
+
+  .task-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text);
+    flex: 1;
+  }
+
+  .task.done .task-text {
+    color: var(--text-dim);
+    text-decoration: line-through;
+    text-decoration-color: var(--accent-dim);
+  }
+
+  .math-box {
+    background: linear-gradient(135deg, var(--accent-dim), transparent);
+    border: 1px solid var(--accent-dim);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 12px;
+  }
+
+  .math-box p {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    line-height: 1.8;
+  }
+
+  .tip-box {
+    background: linear-gradient(135deg, var(--gold-dim), transparent);
+    border: 1px solid var(--gold-dim);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 12px;
+  }
+
+  .tip-box p {
+    font-size: 13px;
+    color: var(--gold);
+    line-height: 1.7;
+  }
+
+  .reward-section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+  }
+
+  .reward-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .reward-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  @media (max-width: 550px) {
+    .reward-grid { grid-template-columns: 1fr; }
+  }
+
+  .reward-card {
+    background: var(--surface);
+    border: 1px solid var(--gold-dim);
+    border-radius: 14px;
+    padding: 22px;
+    text-align: center;
+  }
+
+  .reward-icon { font-size: 28px; margin-bottom: 10px; }
+
+  .reward-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--gold);
+  }
+
+  .reward-card p {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 1.5;
+  }
+
+  .footer {
+    text-align: center;
+    padding: 30px 24px 40px;
+    color: var(--text-dim);
+    font-size: 12px;
+    border-top: 1px solid var(--border);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .reset-btn {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--danger);
+    background: none;
+    border: 1px solid var(--danger);
+    padding: 6px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+  }
+
+  .reset-btn:hover { opacity: 1; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">Special Chance</div>
+  <h1>AI Wealth Group<br><span>Skool Affiliate Program</span></h1>
+  <p>This is your AI Influencer and AI UGC skills turned into recurring income. Use the content creation skills from Level 1 and the distribution system from Level 2 to promote AI Wealth Group — make this community free for life, earn recurring cash, and sharpen your AI skills with a real opportunity — starting at $0 cost.</p>
+</div>
+
+<div class="progress-section">
+  <div class="progress-header">
+    <span>Your Progress</span>
+    <span class="pct" id="progressPct">0%</span>
+  </div>
+  <div class="progress-track">
+    <div class="progress-fill" id="progressFill" style="width:0%"></div>
+  </div>
+</div>
+
+<div class="steps-container" id="steps"></div>
+
+<div class="reward-section">
+  <div class="reward-title">★ Rewards & Challenges ★</div>
+  <div class="reward-grid">
+    <div class="reward-card">
+      <div class="reward-icon">🏆</div>
+      <h4>100+ Referrals</h4>
+      <p>Exclusive discount on our AI Accelerator program + chance to become a partner.</p>
+    </div>
+    <div class="reward-card">
+      <div class="reward-icon">🥇</div>
+      <h4>Monthly Top Referrer</h4>
+      <p>Exclusive prize announced each month inside the community.</p>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  Progress saves automatically in your browser.
+  <br>
+  <button class="reset-btn" onclick="resetAll()">Reset Progress</button>
+</div>
+
+<script>
+const STEPS = [
+  {
+    title: "Understand How the Affiliate Works",
+    desc: "Skool lets community members earn commission for referrals. Every person you refer who successfully joins AI Wealth Group earns you a 40% recurring monthly commission. That's $10.80 per member, every single month they stay.",
+    tasks: [
+      "Read through the affiliate program details in the community",
+      "Understand the 40% recurring commission structure",
+      "Know the numbers: $10.80 per referral, every month, for as long as they stay",
+      "Realise: 3 referrals = free community for life"
+    ],
+    callout: "math",
+    calloutText: "3 refs → community is FREE\n10 refs → $108/mo\n100 refs → $1,080/mo\n1,000 refs → $10,800/mo"
+  },
+  {
+    title: "Get Your Unique Affiliate Link",
+    desc: "Your affiliate link is how Skool tracks every referral back to you. Without it, you don't get credit.",
+    tasks: [
+      "Open AI Wealth Group on Skool",
+      "Click 'Invite People' to generate your unique referral link",
+      "Copy the link and save it somewhere you can grab fast (notes app, pinned message)",
+      "Test the link in an incognito/private browser window to confirm it works"
+    ],
+    callout: "tip",
+    calloutText: "💡 Bookmark your link or pin it in your own DMs — you'll be pasting it daily."
+  },
+  {
+    title: "Start with Word of Mouth ($0 Cost)",
+    desc: "Think about all the friends you have and their friends. Share AI Wealth Group to them — mouth to mouth. Costs you $0 and a couple hours of your time.",
+    tasks: [
+      "Make a list of 10–20 friends, family or contacts interested in AI or making money online",
+      "Write a short genuine message about what you're learning and why it's worth it",
+      "Send your affiliate link personally via DM, text or call — be authentic, no spam",
+      "Follow up once with anyone who hasn't responded",
+      "Ask happy referrals to spread the word to their own circles too"
+    ],
+    callout: "tip",
+    calloutText: "💡 This step alone can get you 2–5 referrals — that's your membership covered for free."
+  },
+  {
+    title: "Apply Your Level 1 AI Content Skills",
+    desc: "You already have the tools from Level 1 — Higgsfield for AI avatars, CapCut for editing, ElevenLabs for voiceover, and ChatGPT or Claude for scripts. Now apply them to create affiliate promotion content. You can create AI Influencer content (building authority in the AI niche) or AI UGC content (testimonial-style videos about the community) — both work for driving referrals.",
+    tasks: [
+      "Use ChatGPT or Claude to write scripts about what you're learning inside AI Wealth Group",
+      "Create AI Influencer videos with Higgsfield — share tips, results, and insights from the community",
+      "Create AI UGC-style testimonial videos — show what the community offers and why it's worth joining",
+      "Edit in CapCut with auto-captions, hook text overlay, and trending audio — your Level 1 workflow",
+      "Participate in the monthly community challenges to sharpen your skills and generate shareable content"
+    ]
+  },
+  {
+    title: "Pick Your Platform & Set Up Your Profile",
+    desc: "Choose one platform to start. Master it before expanding. TikTok, Instagram Reels, YouTube Shorts or Facebook all work.",
+    tasks: [
+      "Choose your primary platform (where your target audience hangs out)",
+      "Create or optimise your profile — clear bio, relevant name",
+      "Add your affiliate link to your bio or link-in-bio page",
+      "Research 5–10 creators in the AI / make-money-online niche for inspiration"
+    ]
+  },
+  {
+    title: "Create AI Content & Funnel to Your Link",
+    desc: "Use your Level 1 tools and Level 2 video structure to create content that drives sign-ups. Every video follows the same framework you learned: Hook → Problem & Promise → Value Delivery → CTA (your affiliate link). You're building an AI Influencer account that promotes AI Wealth Group — or creating AI UGC-style content that shows the community's value.",
+    tasks: [
+      "Plan your first 5 content ideas (tutorials, results, AI tips, behind-the-scenes of what you're building)",
+      "Create videos using Higgsfield, CapCut, and ElevenLabs — the same Level 1 production pipeline",
+      "Structure every video using Level 2's framework: Hook → Problem & Promise → Value Delivery → CTA",
+      "Publish your first piece of content today",
+      "Place your affiliate link everywhere: bio, descriptions, captions, story stickers, pinned comments, DMs",
+      "Post at least 1 piece of content per day — consistency is the #1 growth driver from Level 2"
+    ],
+    callout: "tip",
+    calloutText: "💡 AI Influencer content builds your authority. AI UGC content builds trust through testimonials. Use both to promote your affiliate link — the more content types you use, the wider your reach."
+  },
+  {
+    title: "Track Referrals & Grab Your Commission",
+    desc: "Go to your Skool settings — it will show who you invited. Then grab your commission. It's that simple.",
+    tasks: [
+      "Check your Skool affiliate dashboard at least weekly",
+      "Verify new members show as 'invited by you'",
+      "Go to Settings and collect your commission",
+      "Note which content or outreach method drove the most sign-ups"
+    ]
+  },
+  {
+    title: "Optimise, Scale & Repeat",
+    desc: "This system has no limit. If you refer 1,000 members you get $10,800/month. Double down on what works, cut what doesn't, and keep the machine running.",
+    tasks: [
+      "Identify your top-performing content and create more like it",
+      "Repurpose winning content across additional platforms",
+      "Use your Level 1 AI tools (Higgsfield, CapCut, ElevenLabs) to speed up production without losing quality",
+      "Build a daily system: Create → Post → Funnel → Repeat",
+      "Set monthly referral goals and track toward them",
+      "Engage with every comment and DM — personal replies convert"
+    ],
+    callout: "math",
+    calloutText: "10 refs/mo → $108/mo after month 1\n10 refs/mo → $648/mo after 6 months\n10 refs/mo → $1,296/mo after 12 months\n(commissions are RECURRING — they stack)"
+  },
+  {
+    title: "Hit Milestones & Unlock Rewards",
+    desc: "On top of monthly community challenges in the feed, there are special affiliate rewards to push for.",
+    tasks: [
+      "Compete for the monthly top-referrer prize — announced each month in the community",
+      "Push toward 100 referrals for an exclusive discount on our AI Accelerator program"
+    ]
+  }
+];
+
+const STORAGE_KEY = 'awg_affiliate_v2';
+
+function load() {
+  try { const d = JSON.parse(localStorage.getItem(STORAGE_KEY)); return d && typeof d === 'object' ? d : {}; }
+  catch { return {}; }
+}
+function save(d) { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
+function resetAll() {
+  if (confirm('Reset all progress? This cannot be undone.')) { localStorage.removeItem(STORAGE_KEY); render(); }
+}
+
+function isStepComplete(si, prog) {
+  return STEPS[si].tasks.every((_, ti) => prog[`${si}-${ti}`]);
+}
+
+function render() {
+  const prog = load();
+  const el = document.getElementById('steps');
+  el.innerHTML = '';
+
+  let totalTasks = 0, checkedTasks = 0;
+
+  STEPS.forEach((step, si) => {
+    const complete = isStepComplete(si, prog);
+    const anyChecked = step.tasks.some((_, ti) => prog[`${si}-${ti}`]);
+    const isActive = !complete && (si === 0 || isStepComplete(si - 1, prog) || anyChecked);
+
+    step.tasks.forEach((_, ti) => { totalTasks++; if (prog[`${si}-${ti}`]) checkedTasks++; });
+
+    const block = document.createElement('div');
+    block.className = `step-block${complete ? ' completed' : ''}${isActive ? ' active' : ''}`;
+
+    const marker = document.createElement('div');
+    marker.className = 'step-marker';
+    marker.textContent = complete ? '✓' : (si + 1);
+    block.appendChild(marker);
+
+    const card = document.createElement('div');
+    card.className = 'step-card';
+
+    const header = document.createElement('div');
+    header.className = 'step-card-header';
+    header.innerHTML = `
+      <div class="step-title-group">
+        <div class="step-label">Step ${si + 1} of ${STEPS.length}</div>
+        <div class="step-title">${step.title}</div>
+      </div>
+      <div class="step-toggle">▾</div>
+    `;
+    header.addEventListener('click', () => card.classList.toggle('open'));
+    card.appendChild(header);
+
+    const body = document.createElement('div');
+    body.className = 'step-body';
+    const content = document.createElement('div');
+    content.className = 'step-content';
+
+    const desc = document.createElement('div');
+    desc.className = 'step-desc';
+    desc.textContent = step.desc;
+    content.appendChild(desc);
+
+    step.tasks.forEach((taskText, ti) => {
+      const key = `${si}-${ti}`;
+      const checked = !!prog[key];
+      const task = document.createElement('div');
+      task.className = `task${checked ? ' done' : ''}`;
+
+      const check = document.createElement('div');
+      check.className = `task-check${checked ? ' checked' : ''}`;
+      check.textContent = '✓';
+      check.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const p = load();
+        p[key] = !p[key];
+        save(p);
+        render();
+      });
+
+      const text = document.createElement('div');
+      text.className = 'task-text';
+      text.textContent = taskText;
+
+      task.appendChild(check);
+      task.appendChild(text);
+      content.appendChild(task);
+    });
+
+    if (step.callout === 'math') {
+      const box = document.createElement('div');
+      box.className = 'math-box';
+      box.innerHTML = `<p>${step.calloutText.replace(/\n/g, '<br>')}</p>`;
+      content.appendChild(box);
+    } else if (step.callout === 'tip') {
+      const box = document.createElement('div');
+      box.className = 'tip-box';
+      box.innerHTML = `<p>${step.calloutText}</p>`;
+      content.appendChild(box);
+    }
+
+    body.appendChild(content);
+    card.appendChild(body);
+    block.appendChild(card);
+    el.appendChild(block);
+
+    if (isActive && !complete) card.classList.add('open');
+  });
+
+  const pct = totalTasks ? Math.round((checkedTasks / totalTasks) * 100) : 0;
+  document.getElementById('progressPct').textContent = pct + '%';
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+render();
+</script>
+</body>
+</html>
